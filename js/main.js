@@ -1,5 +1,5 @@
 // TODO: Use the api from https://deckofcardsapi.com/
-// Get a deck from the API
+// Get a deck from the API - Done
 // Link the deck to the rest of the game
 // Ask Player to enter their name
 // Ask user to begin game
@@ -19,8 +19,8 @@
 document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch() {
-  const choice = document.querySelector('input').value
-  const url = 'https://pokeapi.co/api/v2/pokemon/' + choice
+  // const choice = document.querySelector('input').value
+  const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
   fetch(url)
     .then(res => res.json()) // parse response as JSON
