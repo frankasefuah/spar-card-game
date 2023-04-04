@@ -4,7 +4,8 @@
 // Ask Player to enter their name - Done
 // Store their name - Done
 // Ask user to begin game - Done
-// Ask player to ask if cards should be shuffled
+// Ask player to ask if cards should be shuffled - Done
+// Shuffle cards if the user clicks the button - Done
 // Ask player to deal the cards
 // Draw 5 cards for each player
 // Player / Bot goes first
@@ -30,8 +31,6 @@ function getDeck() {
     .then(data => {
       console.log(data)
       deckID = data.deck_id
-      console.log(deckID)
-      console.log(data.remaining)
       document.querySelector('#startGame').disabled = true
       userName = document.querySelector('#userName').value
       document.querySelector('h3').innerText += ` ${userName} to the game!`
@@ -44,4 +43,18 @@ function getDeck() {
 
 function showNumberOfCardsLeft(data) {
   document.querySelector('p').innerText += ` ${data.remaining}`
+}
+
+document.querySelector('#shuffle').addEventListener('click', shuffle)
+
+function shuffle() {
+  fetch(`https://deckofcardsapi.com/api/deck/${deckID}/shuffle/?remaining=true`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      console.log("Cards shuffled")
+    })
+    .catch(err => {
+      console.log(`error ${err}`)
+    });
 }
