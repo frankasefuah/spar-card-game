@@ -9,7 +9,7 @@
 // Ask player to deal the cards - Done
 // Draw 5 cards for each player - Done
 // Assign cards to players
-// Select applicable cards only 
+// Select applicable cards only -Done
 // Player / Bot goes first
 // For each card played the opponent must play a card of the same type if they have it. If they pick any other card they should'nt be allowed
 // If they have multiple of the same they can pick which of that one they play
@@ -21,12 +21,13 @@
 let deckID = ''
 let userName = ''
 let cardsLeft = ''
+const cardsAccepted = `AS,KS,QS,JS,0S,9S,8S,7S,6S,AD,KD,QD,JD,0D,9D,8D,7D,6D,AC,KC,QC,JC,0C,9C,8C,7C,6C,AH,KH,QH,JH,0H,9H,8H,7H,6H`
 
 // Get a Deck of Cards
 document.querySelector('#startGame').addEventListener('click', getDeck)
 function getDeck() {
   // const choice = document.querySelector('input').value
-  const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
+  const url = `https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${cardsAccepted}`
 
   fetch(url)
     .then(res => res.json()) // parse response as JSON
