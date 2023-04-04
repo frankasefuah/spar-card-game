@@ -92,6 +92,7 @@ function cardsConvertion(val) {
   }
   else if (val == 'JACK') {
     return 11
+  } else {
+    return Number(val)
   }
-
 }
