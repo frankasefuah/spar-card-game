@@ -20,8 +20,8 @@ let deckID = ''
 let userName = ''
 let cardsLeft = ''
 
+// Get a Deck of Cards
 document.querySelector('#startGame').addEventListener('click', getDeck)
-
 function getDeck() {
   // const choice = document.querySelector('input').value
   const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
@@ -41,10 +41,12 @@ function getDeck() {
     });
 }
 
+// Show cards left
 function showNumberOfCardsLeft(data) {
   document.querySelector('p').innerText += ` ${data.remaining}`
 }
 
+// Shuffle Cards
 document.querySelector('#shuffle').addEventListener('click', shuffle)
 
 function shuffle() {
