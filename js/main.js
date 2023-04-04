@@ -34,10 +34,14 @@ function getDeck() {
       console.log(data.remaining)
       document.querySelector('#startGame').disabled = true
       userName = document.querySelector('#userName').value
-      document.querySelector('h3').innerText += ` ${userName}`
+      document.querySelector('h3').innerText += ` ${userName} to the game!`
+      showNumberOfCardsLeft(data)
     })
     .catch(err => {
       console.log(`error ${err}`)
     });
 }
 
+function showNumberOfCardsLeft(data) {
+  document.querySelector('p').innerText += ` ${data.remaining}`
+}
