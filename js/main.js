@@ -1,7 +1,7 @@
 // TODO: Use the api from https://deckofcardsapi.com/
 // Get a deck from the API - Done
 // Link the deck to the rest of the game
-// Ask Player to enter their name
+// Ask Player to enter their name - Done
 // Ask user to begin game
 // Ask player to ask if cards should be shuffled
 // Ask player to deal the cards
@@ -14,11 +14,11 @@
 // If a player wins when they play 6 in their last play their score is worth 3 points
 // If a player wins when they play 7 in their last play their score is worth 2 points
 // If a player wins with 6 in the fourth card and 7 in the final card their score is worth 5 points
+let deckID = ''
 
+document.querySelector('#startGame').addEventListener('click', getDeck)
 
-document.querySelector('button').addEventListener('click', getFetch)
-
-function getFetch() {
+function getDeck() {
   // const choice = document.querySelector('input').value
   const url = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
 
@@ -26,6 +26,10 @@ function getFetch() {
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data)
+      deckID = data.deck_id
+      console.log(deckID)
+      console.log(data.remaining)
+      document.querySelector('#startGame').disabled = true
     })
     .catch(err => {
       console.log(`error ${err}`)
