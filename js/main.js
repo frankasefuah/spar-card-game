@@ -1,8 +1,9 @@
 // TODO: Use the api from https://deckofcardsapi.com/
 // Get a deck from the API - Done
-// Link the deck to the rest of the game
+// Link the deck to the rest of the game - Done
 // Ask Player to enter their name - Done
-// Ask user to begin game
+// Store their name - Done
+// Ask user to begin game - Done
 // Ask player to ask if cards should be shuffled
 // Ask player to deal the cards
 // Draw 5 cards for each player
@@ -15,6 +16,8 @@
 // If a player wins when they play 7 in their last play their score is worth 2 points
 // If a player wins with 6 in the fourth card and 7 in the final card their score is worth 5 points
 let deckID = ''
+let userName = ''
+let cardsLeft = ''
 
 document.querySelector('#startGame').addEventListener('click', getDeck)
 
@@ -30,6 +33,8 @@ function getDeck() {
       console.log(deckID)
       console.log(data.remaining)
       document.querySelector('#startGame').disabled = true
+      userName = document.querySelector('#userName').value
+      document.querySelector('h3').innerText += ` ${userName}`
     })
     .catch(err => {
       console.log(`error ${err}`)
