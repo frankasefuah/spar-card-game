@@ -6,8 +6,10 @@
 // Ask user to begin game - Done
 // Ask player to ask if cards should be shuffled - Done
 // Shuffle cards if the user clicks the button - Done
-// Ask player to deal the cards
-// Draw 5 cards for each player
+// Ask player to deal the cards - Done
+// Draw 5 cards for each player - Done
+// Assign cards to players
+// Select applicable cards only 
 // Player / Bot goes first
 // For each card played the opponent must play a card of the same type if they have it. If they pick any other card they should'nt be allowed
 // If they have multiple of the same they can pick which of that one they play
@@ -59,4 +61,25 @@ function shuffle() {
     .catch(err => {
       console.log(`error ${err}`)
     });
+}
+
+// Deal Cards
+document.querySelector('#dealCards').addEventListener('click', dealCards)
+
+function dealCards() {
+  fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=10`)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      console.log("Cards dealt")
+    })
+    .catch(err => {
+      console.log(`error ${err}`)
+    });
+}
+
+
+// Face Cards conversion to Numbers
+function cardsConvertion() {
+
 }
