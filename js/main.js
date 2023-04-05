@@ -46,7 +46,7 @@ function getDeck() {
 
 // Show cards left
 function showNumberOfCardsLeft(data) {
-  document.querySelector('p').innerText += ` ${data.remaining}`
+  document.querySelector('p').innerText = `Number of Cards left:  ${data.remaining}`
 }
 
 // Shuffle Cards
@@ -73,6 +73,12 @@ function dealCards() {
     .then(data => {
       console.log(data)
       console.log("Cards dealt")
+      document.querySelector('#firstCard').src = data.cards[0].image
+      document.querySelector('#secondCard').src = data.cards[1].image
+      document.querySelector('#thirdCard').src = data.cards[2].image
+      document.querySelector('#fourthCard').src = data.cards[3].image
+      document.querySelector('#fifthCard').src = data.cards[4].image
+      showNumberOfCardsLeft(data)
     })
     .catch(err => {
       console.log(`error ${err}`)
@@ -96,3 +102,4 @@ function cardsConvertion(val) {
     return Number(val)
   }
 }
+
